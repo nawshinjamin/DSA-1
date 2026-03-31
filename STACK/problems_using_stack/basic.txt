@@ -1,0 +1,18 @@
+LAST IN FIRST OUT(LIFO)
+
+
+
+FUNCTIONS:
+
+1. push: notun element upore add jore
+2.pop: uporer element ke sorano
+3. peek/top: uporer element ta dekha , kintu sorano noy
+4. isEmpty : stack faka kina check kore
+5. size() : size return kore
+
+
+push(10) -> [10]
+push(20) -> [10,20]
+push(30) -> [10,20,30]
+pop()    -> [10,20] (30 ber hoye gelo)
+peek()/top()   -> 20
