@@ -1,0 +1,30 @@
+Time complexity Analysis for my code(2405119):
+
+DP table construction:
+the DP table has dimensions (l1 + 1) x (l2 + 1)
+l1 = length of string S 
+l2 = length of string T 
+
+Each cell dp[i][j] is computed in constant time:
+either a match , or the minimum of three possible operations (Insert , Delete , Replace)
+Total number of cells : (l1 + 1)(l2 + 1)
+
+Time complexity for DP table filling: O(l1 . l2)
+
+
+The code is structured around two functions:
+1. print
+2. main
+
+1. print:
+The print(i,j) function recursively backtracks through the DP table
+In the worst case, it traverses all characters of both strings
+Each recursive call is constant time.
+Time complexity for printing : O(l1 + l2)
+
+overall time complexity : O((l1 . l2) + (l1 + l2)) = O(l1 . l2)
+
+SPACE COMPLEXITY:
+DP table size : (l1 + 1) x (l2 + 1) = O(l1.l2)
+Recursion stack : O(l1 + l2)
+overall space complexity : O(l1.l2)

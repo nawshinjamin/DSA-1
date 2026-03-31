@@ -1,0 +1,61 @@
+Time complexity Analysis for my code(2405119):
+
+The code is structured around four functions:
+1.isConnected
+2.soln_BaseCase
+3.final_connect(the divide and conquer func)
+4.main
+
+1.isConnected:
+Performs a DFS traversal and determines if two nodes or two cities are connected with an edge or not.
+analysis:
+* reseting visited array takes O(N)
+* DFS in worst case visits all the nodes of current component
+* as the func is used only inside the basecase where the group size is <= M 
+so the effective cost per call O(M)
+
+2. soln_BaseCase:
+
+handles the case when the number of cities in the group is <= M 
+analysis:
+(a) generating Edges:
+for M cities, it generates all possible pairs:
+M(M-1)/2 = O(M^2)
+So edge generation cost = O(M^2)
+
+(b) Selecting Edges to build MST
+we repeatedly pick the minimum edge until we get (M-1) Edges
+
+The loop runs approximately M times
+inside each iteration :
+finding minimum edge -> O(M^2)
+calling isconnected -> O(M)
+
+so each iteration costs: O(M^2 + M) = O(M^2)
+
+total for M iterations: O(M^3)
+since M <= 50, this becomes O(1)
+
+3. final_connect func:
+this is the main recursive finc. Recurrance relation is : T(N) = 2T(N/2) + MergeCost
+merge step analysis: Last M cities of lest half and first M cities of right half are compared
+total comparisons = O(M^2)
+since M is small and const O(M^2) = O(1)
+
+the final recurrance relation T(N) = 2T(T/2) + O(M^2) => T(N) = 2T(N/2) + O(1)
+using master theorem :
+a = 2
+b + 2
+logb(a) = 1
+Therefore, T(N) = O(N)
+
+4.mergeSort func:
+its time complexity is O(NlogN)
+
+5. main func:
+reading input -> O(N)
+calling mergesort -> O(NlogN)
+calling final_connect -> O(N)
+
+here the dominant term is O(NlogN)
+so, the final time complexity is O(NlogN)
